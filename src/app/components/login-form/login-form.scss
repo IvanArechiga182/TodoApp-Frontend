@@ -1,0 +1,31 @@
+@import '../../../styles/colors';
+
+.error {
+  font-size: 10px;
+  margin-top: -10px;
+}
+
+.input-error {
+  border: 1px solid red;
+  transition: 500ms all ease;
+}
+
+.error-message {
+  background: $danger;
+  border-radius: 10px;
+  padding: 5px;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.error-message p,
+.loading p {
+  color: white;
+  margin: 5px;
+}
+
+.loading {
+  background: $success;
+  border-radius: 10px;
+  padding: 5px;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}

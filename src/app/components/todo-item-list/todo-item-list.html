@@ -1,0 +1,34 @@
+<div class="searchContainer">
+  <div class="searchBar">
+    <!-- The placeholer needs to be evaluated if there's actually at least
+     1 task added to the user, saying if not "You don't have any tasks yet
+     add a new one!" and then if the users do that, the placeholder will change to
+     "Search between your tasks and it will filter the tasks" -->
+    <input
+      type="search"
+      name="searchbar"
+      id="searchbar"
+      placeholder="{{ this.placeholder }}"
+      disabled
+    />
+  </div>
+  <div class="addTaskBtn">
+    <button role="button" id="addTaskBtn" (click)="openNewTaskModal()">
+      <span>&plus;</span>
+    </button>
+  </div>
+</div>
+
+<div class="taskListSection">
+  <div class="headers">
+    <ul>
+      <li>Title</li>
+      <li>Description</li>
+      <li>Priority</li>
+      <li>Status</li>
+      <li>Created at</li>
+      <li>Updated at</li>
+      <li>Due at</li>
+    </ul>
+  </div>
+</div>

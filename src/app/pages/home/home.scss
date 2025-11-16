@@ -1,0 +1,27 @@
+@import '../../../styles/colors';
+
+.salute {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  width: 20%;
+  margin: 20px auto;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    width: 55%;
+  }
+}
+
+.mainSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

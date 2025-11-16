@@ -1,1 +1,110 @@
 /* You can add global styles to this file, and also import other style files */
+@import './styles/colors';
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $bg-color;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+p {
+  color: $text;
+}
+
+.secondary {
+  color: $text-secondary;
+}
+
+.success {
+  color: $success;
+}
+
+.error {
+  color: $danger;
+}
+
+.highlight {
+  background-color: $highlight;
+}
+
+a {
+  text-decoration: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  align-items: center;
+  border: 1px solid #cccc;
+  padding: 15px;
+  background-color: #ffff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+//General forms styles and placing
+.formContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 4em;
+}
+
+.formContainer form h2,
+p {
+  text-align: center;
+}
+
+.formContainer form a {
+  color: rgb(45, 171, 212);
+}
+
+.formContainer form label {
+  padding: 3px;
+}
+
+// .formContainer form label::before {
+//   content: '*';
+//   color: red;
+// }
+
+.formContainer form input {
+  border-radius: 10px;
+  margin-top: 5px;
+  border: 1px solid #cccc;
+  padding: 4px;
+  transition: 300ms all ease;
+}
+
+.formContainer form input:focus {
+  outline: none;
+  border: 1px solid $secondary;
+}
+
+.formContainer form button {
+  width: 40%;
+  margin: 0 auto;
+  padding: 5px;
+  border-radius: 10px;
+  background: $primary;
+  color: #ffff;
+  font-weight: bold;
+  font-size: 15px;
+  outline: none;
+  border: 1px solid white;
+  transition: 300ms all ease;
+  margin-top: 10px;
+}
+
+.formContainer form button:hover {
+  background: $secondary;
+  border: 1px solid $primary;
+  cursor: pointer;
+}
+
+.formContainer form p {
+  margin-top: 15px;
+}

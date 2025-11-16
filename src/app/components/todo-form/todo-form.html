@@ -1,0 +1,84 @@
+<div class="formModalContainer isVisible">
+  <div class="formContent" id="formModal">
+    <span class="close" (click)="cancel()" (submit)="addNewTask()">&times;</span>
+    <form role="form" [formGroup]="newTaskForm">
+      <label for="title">
+        Title <br />
+        <input
+          type="text"
+          name="title"
+          id="title"
+          formControlName="title"
+          [ngClass]="getErrorClass('title')"
+        />
+      </label>
+      @if(getErrorClass('title')) {
+      <div class="error">
+        @if(newTaskForm.get('title')?.errors?.['required']) {
+        <p>Task title is required.</p>
+        }
+      </div>
+      }
+      <label for="description">
+        Description <br />
+        <textarea
+          name="descrption"
+          id="description"
+          formControlName="description"
+          [ngClass]="getErrorClass('description')"
+        ></textarea>
+      </label>
+      @if(getErrorClass('description')) {
+      <div class="error">
+        @if(newTaskForm.get('description')?.errors?.['required']) {
+        <p>Task description is required.</p>
+        } @if(newTaskForm.get('description')?.errors?.['maxlength']){
+        <p>Task description must be maximum 150 characters</p>
+        }
+      </div>
+      }
+      <label for="priority">
+        Priority <br />
+        <select
+          name="priority"
+          id="priority"
+          formControlName="priority"
+          [ngClass]="getErrorClass('priority')"
+        >
+          <option value="" disabled>--Choose an option--</option>
+          @for (priority of priorityLevels;track $index) {
+          <option value="{{ priority }}">{{ priority }}</option>
+          }
+        </select>
+      </label>
+      @if(getErrorClass('priority')) {
+      <div class="error">
+        @if(newTaskForm.get('priority')?.errors?.['required']) {
+        <p>Task priority is required.</p>
+        }
+      </div>
+      }
+      <label for="dueAt">
+        Due at <br />
+        <input
+          type="date"
+          name="dueAt"
+          id="dueAt"
+          formControlName="dueAt"
+          [ngClass]="getErrorClass('dueAt')"
+        />
+      </label>
+      @if(getErrorClass('dueAt')) {
+      <div class="error">
+        @if(newTaskForm.get('dueAt')?.errors?.['required']) {
+        <p>Task due is required.</p>
+        }
+      </div>
+      }
+      <div class="actionButtons">
+        <button type="button" id="cancelTask" (click)="cancel()">Cancel</button>
+        <button type="submit" id="addTask" (click)="addNewTask()">Add task</button>
+      </div>
+    </form>
+  </div>
+</div>

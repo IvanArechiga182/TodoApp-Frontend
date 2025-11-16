@@ -1,0 +1,95 @@
+@import '../../../styles/colors';
+
+.searchContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.searchBar input {
+  border-radius: 10px;
+  padding: 5px;
+  width: 110%;
+}
+
+.searchBar input::placeholder {
+  font-size: 0.9em;
+}
+
+.taskListSection {
+  display: flex;
+  margin-top: 15px;
+  border: 1px solid black;
+  height: 400px;
+  border-radius: 15px;
+}
+
+.searchContainer {
+  display: flex;
+  gap: 2em;
+  align-items: center;
+}
+
+.addTaskBtn button {
+  background-color: $success;
+  padding: 10px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 20px;
+  position: relative;
+  border: 0 solid;
+  transition: 300ms all ease;
+}
+
+.addTaskBtn button:hover {
+  background-color: $primary;
+  color: white;
+}
+
+.addTaskBtn button span {
+  position: absolute;
+  bottom: 2px;
+  left: 9px;
+}
+
+.headers {
+  width: 100%;
+  text-align: center;
+  height: 60px;
+}
+.headers ul {
+  display: flex;
+  list-style: none;
+  padding: 15px;
+  align-items: center;
+  border-bottom: 2px solid #ccc;
+  gap: 4.5em;
+}
+
+@media (min-width: 768px) {
+  .mainSection {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .headers ul {
+    width: 10%;
+    font-size: 13px;
+  }
+
+  .headers {
+    display: none;
+  }
+
+  .salute {
+    text-align: center;
+  }
+  .taskListSection {
+    flex-direction: column;
+    width: 90%;
+  }
+}

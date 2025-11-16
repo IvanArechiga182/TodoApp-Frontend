@@ -1,0 +1,11 @@
+<div class="salute">
+  <h2>Welcome, {{ this.authUserName() }}</h2>
+  <h3>Start adding your tasks!</h3>
+</div>
+<main class="mainSection">
+  <app-todo-item-list (newTask)="openFormModal()" />
+  @if(showNewTaskModal()){
+  <app-todo-form (close)="closeFormModal()"></app-todo-form>
+  }
+  <h2>This section is where the add task layout needs to be</h2>
+</main>

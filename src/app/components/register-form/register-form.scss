@@ -1,0 +1,23 @@
+@import '../../../styles/colors';
+.showPassword {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.error {
+  margin-top: -10px;
+}
+
+.error p {
+  font-size: 10px;
+}
+
+.input-error {
+  border: 1px solid red;
+  transition: 500ms all ease;
+}
+
+.error-message {
+  background-color: $danger;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}

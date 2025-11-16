@@ -1,0 +1,98 @@
+<div class="formContainer">
+  <form role="form" id="registerForm" [formGroup]="registerForm" (submit)="registerUser()">
+    <h2 class="secondary">Create an account</h2>
+    <br />
+    @if(errorMessage() != '') {
+    <div class="error-message">
+      <p>{{ errorMessage() }}</p>
+    </div>
+    } @if(loading()){
+    <div class="loading">
+      <p>{{ successMessage() + ' redirecting...' }}</p>
+    </div>
+    }
+    <label for="username">
+      Username <br />
+      <input
+        type="text"
+        name="username"
+        id="username"
+        formControlName="username"
+        [ngClass]="getErrorClass('username')"
+      />
+    </label>
+    @if(getErrorClass('username')) {
+    <div class="error">
+      @if(registerForm.get('username')?.errors?.['required']) {
+      <p>Username is required.</p>
+      } @if(registerForm.get('username')?.errors?.['minlength']) {
+      <p>Username must be at least 10 characters long.</p>
+      }
+    </div>
+    }
+    <label for="userEmail">
+      Email <br />
+      <input
+        type="text"
+        name="userEmail"
+        id="userEmail"
+        formControlName="userEmail"
+        [ngClass]="getErrorClass('userEmail')"
+      />
+    </label>
+    @if(getErrorClass('userEmail')) {
+    <div class="error">
+      @if(registerForm.get('userEmail')?.errors?.['required']) {
+      <p>Email is required.</p>
+      } @if(registerForm.get('userEmail')?.errors?.['email']) {
+      <p>Please enter a valid email address.</p>
+      }
+    </div>
+    }
+    <label for="password">
+      Password <br />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        formControlName="password"
+        [ngClass]="getErrorClass('password')"
+      />
+    </label>
+    @if(getErrorClass('password')) {
+    <div class="error">
+      @if(registerForm.get('password')?.errors?.['required']) {
+      <p>Password is required.</p>
+      } @if(registerForm.get('password')?.errors?.['minlength']) {
+      <p>Password must be at least 8 characters long.</p>
+      }
+    </div>
+    }
+    <label for="confirmPassword">
+      Confirm password <br />
+      <input
+        type="password"
+        name="confirmPassword"
+        id="confirmPassword"
+        formControlName="confirmPassword"
+        [ngClass]="getErrorClass('confirmPassword')"
+      />
+    </label>
+    @if(registerForm.get('confirmPassword')?.touched) {
+    <div class="error">
+      @if(registerForm.get('confirmPassword')?.errors?.['required']) {
+      <p>Confirm password is required.</p>
+      } @if(registerForm.errors?.['notSame'] && registerForm.get('password')?.value &&
+      registerForm.get('confirmPassword')?.value) {
+      <p>Passwords must match</p>
+      }
+    </div>
+    }
+    <div class="showPassword">
+      Show passwords
+      <input type="checkbox" name="viewPasswords" id="viewPasswords" (click)="showPassword()" />
+    </div>
+    <button type="submit" role="button">Register</button>
+    <p>Already have an account? <a routerLink="/login">Log in</a></p>
+  </form>
+</div>

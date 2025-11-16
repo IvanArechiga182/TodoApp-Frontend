@@ -1,0 +1,78 @@
+@import '../styles/colors';
+
+nav {
+  background: $primary;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+
+  @media (max-width: 300px) {
+    font-size: 12px;
+  }
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  background-color: $secondary;
+  padding: 5px;
+  border-radius: 3px;
+  transition: 300ms all ease;
+
+  @media (max-width: 300px) {
+    font-size: 20px;
+  }
+}
+
+svg {
+  transition: 300ms all ease;
+}
+
+nav a:hover {
+  background: $success;
+  fill: #000;
+
+  svg {
+    fill: #000;
+  }
+}
+
+.logo a {
+  background: none;
+}
+
+.logo a:hover {
+  background: none;
+  color: #eeecec;
+}
+
+#username {
+  color: white;
+}
+
+#logOutBtn {
+  text-align: center;
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 15px;
+  width: 100px;
+  cursor: pointer;
+  transition: 300ms all ease;
+}
+
+#logOutBtn:hover {
+  background-color: $text-secondary;
+  color: white;
+}
