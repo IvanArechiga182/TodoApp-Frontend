@@ -1,11 +1,5 @@
 import { Component, output, signal } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-  ValidationErrors,
-} from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth-service';
 import { getErrorClass as UtilsGetErrorClass } from '../../utils/form-utils';
 import { CommonModule } from '@angular/common';
@@ -13,8 +7,6 @@ import { TaskOperationsService } from '../../services/tasks/task';
 import { SingleTaskOperationRequest } from '../../interfaces/tasks/single-task-operation-request';
 import { AddNewTaskRequest } from '../../interfaces/tasks/AddNewTasks/add-new-task-request';
 import { TaskOperationResponse } from '../../interfaces/tasks/task-operation-response';
-import { sign } from 'crypto';
-import { BlockList } from 'net';
 @Component({
   selector: 'app-todo-form',
   imports: [ReactiveFormsModule, CommonModule],

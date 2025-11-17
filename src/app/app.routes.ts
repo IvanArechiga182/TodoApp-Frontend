@@ -4,32 +4,26 @@ import { Login } from './pages/login/login';
 import { Register } from './pages/register/register';
 import { CreateTask } from './pages/create-task/create-task';
 import { NotFound } from './pages/not-found/not-found';
-import { authGuard } from './guards/auth-guard';
 export const routes: Routes = [
   {
     path: '',
-    component: Login,
+    loadComponent: () => import('./pages/login/login').then((m) => m.Login),
   },
   {
     path: 'login',
-    component: Login,
+    loadComponent: () => import('./pages/login/login').then((m) => m.Login),
   },
   {
     path: 'register',
-    component: Register,
+    loadComponent: () => import('./pages/register/register').then((m) => m.Register),
   },
   {
     path: 'home',
-    component: Home,
-    // canActivate: [authGuard],
-  },
-  {
-    path: 'createNewTask',
-    component: CreateTask,
+    loadComponent: () => import('./pages/home/home').then((m) => m.Home),
     // canActivate: [authGuard],
   },
   {
     path: '**',
-    component: NotFound,
+    loadComponent: () => import('./pages/not-found/not-found').then((m) => m.NotFound),
   },
 ];
