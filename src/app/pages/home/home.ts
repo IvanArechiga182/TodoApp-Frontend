@@ -2,7 +2,6 @@ import { Component, signal } from '@angular/core';
 import { AuthService } from '../../services/auth/auth-service';
 import { TodoItemList } from '../../components/todo-item-list/todo-item-list';
 import { TodoForm } from '../../components/todo-form/todo-form';
-import { TaskOperationsService } from '../../services/tasks/task';
 @Component({
   selector: 'app-home',
   imports: [TodoItemList, TodoForm],
@@ -13,6 +12,7 @@ export class Home {
   constructor(private auth: AuthService) {}
 
   showNewTaskModal = signal<boolean>(false);
+
   get authUser() {
     return this.auth.authUser;
   }

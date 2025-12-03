@@ -54,7 +54,7 @@ export class LoginForm {
         setTimeout(() => {
           this.auth.setUserData(token);
           this.loading.set(false);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/']);
         }, 5000);
         return;
       },

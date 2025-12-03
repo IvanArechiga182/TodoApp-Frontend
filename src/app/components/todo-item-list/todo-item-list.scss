@@ -54,18 +54,33 @@
   left: 9px;
 }
 
-.headers {
-  width: 100%;
+.taskListTable table {
+  padding: 10px;
   text-align: center;
-  height: 60px;
+  border-collapse: collapse;
 }
-.headers ul {
-  display: flex;
-  list-style: none;
-  padding: 15px;
-  align-items: center;
-  border-bottom: 2px solid #ccc;
-  gap: 4.5em;
+
+.taskListTable table td,
+th {
+  padding: 5px;
+  border: 1px solid black;
+}
+
+.taskListTable button {
+  padding: 6px;
+  margin-top: 5px;
+  margin-left: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.deleteTaskBtn {
+  background-color: $danger;
+}
+
+.editTaskBtn {
+  background-color: $secondary;
 }
 
 @media (min-width: 768px) {

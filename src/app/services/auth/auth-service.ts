@@ -6,7 +6,7 @@ import { LoginRequest } from '../../interfaces/auth/Login/login-request';
 import { RegisterRequest } from '../../interfaces/auth/Register/register-request';
 import { jwtDecode } from 'jwt-decode';
 import { JwtPayload } from '../../interfaces/auth/JwtPayload';
-import { decode } from 'punycode';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +17,7 @@ export class AuthService {
   logOut = signal<string>('Log out');
   userId = signal<number | null>(0);
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private router: Router) {
     this.loadUserFromToken();
   }
 
@@ -69,6 +69,7 @@ export class AuthService {
       this.logOut.set('Log out');
       this.authUser.set(false);
       this.username.set(null);
+      this.router.navigate(['/login']);
     }, 4000);
   }
 

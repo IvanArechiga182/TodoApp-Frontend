@@ -1,9 +1,9 @@
 <div class="searchContainer">
   <div class="searchBar">
-    <!-- The placeholer needs to be evaluated if there's actually at least
-     1 task added to the user, saying if not "You don't have any tasks yet
-     add a new one!" and then if the users do that, the placeholder will change to
-     "Search between your tasks and it will filter the tasks" -->
+    <!-- tre placeholer needs to be evaluated if trere's actually at least
+     1 task added to tre user, saying if not "You don't have any tasks yet
+     add a new one!" and tren if tre users do trat, tre placeholder will change to
+     "Search between your tasks and it will filter tre tasks" -->
     <input
       type="search"
       name="searchbar"
@@ -19,16 +19,40 @@
   </div>
 </div>
 
-<div class="taskListSection">
-  <div class="headers">
-    <ul>
-      <li>Title</li>
-      <li>Description</li>
-      <li>Priority</li>
-      <li>Status</li>
-      <li>Created at</li>
-      <li>Updated at</li>
-      <li>Due at</li>
-    </ul>
-  </div>
+<div class="taskListTable">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Priority</th>
+        <th scope="col">Status</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Updated At</th>
+        <th scope="col">Due At</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for(task of taskService.tasks(); track $index){
+      <tr>
+        <td>{{ task.title }}</td>
+        <td>{{ task.description }}</td>
+        <td>{{ task.priority }}</td>
+        <td>{{ task.status }}</td>
+        <td>{{ task.createdAt }}</td>
+        <td>
+          @if(task.updatedAt == null){
+          {{ 'Not updated yet.' }}
+          }@else{
+          {{ task.updatedAt }}
+          }
+        </td>
+        <td>{{ task.dueAt }}</td>
+        <button class="deleteTaskBtn" (click)="deleteTask(task.id)">X</button>
+        <button class="editTaskBtn">Edit</button>
+      </tr>
+      }
+    </tbody>
+  </table>
 </div>

@@ -1,8 +1,8 @@
-import { AddNewTaskRequest } from './AddNewTasks/add-new-task-request';
+import { TaskModel } from './task-model';
 
 export interface TaskOperationResponse {
   status: number;
   message: string;
   trackId: string;
-  tasksList: AddNewTaskRequest[];
+  tasksList: TaskModel[];
 }
