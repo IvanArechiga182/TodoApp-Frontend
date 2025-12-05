@@ -10,7 +10,10 @@ import { TaskModel } from '../../interfaces/tasks/task-model';
 export class TaskOperationsService {
   constructor(private httpClient: HttpClient) {}
   private baseUrl = 'https://localhost:7198/api';
+
   tasks = signal<TaskModel[]>([]);
+  taskToEdit = signal<TaskModel | null>(null);
+
   addNewTask(
     request: AddNewTaskRequest,
     userId: number,
@@ -35,6 +38,23 @@ export class TaskOperationsService {
     });
   }
 
+  editTask(
+    userId: number,
+    taskId: number,
+    token: string,
+    request: AddNewTaskRequest
+  ): Observable<TaskOperationResponse> {
+    return this.httpClient.put<TaskOperationResponse>(
+      `${this.baseUrl}/EditTaskById/${userId}/${taskId}`,
+      request,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  }
+
   deleteTask(userId: number, taskId: number, token: string): Observable<TaskOperationResponse> {
     return this.httpClient.delete<TaskOperationResponse>(
       `${this.baseUrl}/DeleteTaskById/${userId}/${taskId}`,
@@ -52,6 +72,14 @@ export class TaskOperationsService {
 
   addTasks(task: TaskModel[]) {
     this.tasks.update((t) => [...t, ...task]);
+  }
+
+  updateTasks(task: TaskModel) {
+    this.tasks.update((tasks) => tasks.map((t) => (t.id === task.id ? { ...t, ...task } : t)));
+  }
+
+  setTaskToEdit(task: TaskModel) {
+    this.taskToEdit.set(task);
   }
 
   removeTask(taskId: number) {

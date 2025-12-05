@@ -13,7 +13,9 @@ export class TodoItemList {
   constructor(public taskService: TaskOperationsService, private auth: AuthService) {}
 
   placeholder = "You don't have any tasks yet!";
+
   newTask = output<void>();
+  editTask = output<void>();
 
   ngOnInit() {
     this.fetchUserTasks();
@@ -21,6 +23,11 @@ export class TodoItemList {
 
   openNewTaskModal() {
     this.newTask.emit();
+  }
+
+  openEditTaskModal(task: TaskModel) {
+    this.editTask.emit();
+    this.taskService.setTaskToEdit(task);
   }
 
   fetchUserTasks() {
@@ -36,10 +43,6 @@ export class TodoItemList {
       },
     });
   }
-
-  // editTask(task: TaskModel) {
-  //   console.log(task);
-  // }
 
   deleteTask(taskId: number) {
     const userId = this.auth.userId()!;

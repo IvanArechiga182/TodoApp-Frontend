@@ -4,5 +4,6 @@ export interface TaskOperationResponse {
   status: number;
   message: string;
   trackId: string;
+  taskData: TaskModel;
   tasksList: TaskModel[];
 }

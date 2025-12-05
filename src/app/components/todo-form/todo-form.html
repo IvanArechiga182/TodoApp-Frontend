@@ -1,7 +1,7 @@
 <div class="formModalContainer isVisible">
   <div class="formContent" id="formModal">
-    <span class="close" (click)="cancel()" (submit)="addNewTask()">&times;</span>
-    <form role="form" [formGroup]="newTaskForm">
+    <span class="close" (click)="cancel()">&times;</span>
+    <form role="form" [formGroup]="newTaskForm" (submit)="submit()">
       <label for="title">
         Title <br />
         <input
@@ -57,6 +57,21 @@
         <p>Task priority is required.</p>
         }
       </div>
+      } @if(formMode() === 'edit'){
+      <label for="status">
+        Status <br />
+        <select
+          name="status"
+          id="status"
+          formControlName="status"
+          [ngClass]="getErrorClass('status')"
+        >
+          <option value="" disabled>--Choose an option--</option>
+          @for (status of tasksStatus;track $index) {
+          <option value="{{ status }}">{{ status }}</option>
+          }
+        </select>
+      </label>
       }
       <label for="dueAt">
         Due at <br />
@@ -77,7 +92,9 @@
       }
       <div class="actionButtons">
         <button type="button" id="cancelTask" (click)="cancel()">Cancel</button>
-        <button type="submit" id="addTask" (click)="addNewTask()">Add task</button>
+        <button type="submit" id="addTask">
+          @if(formMode() === 'create'){ Add task }@else { Edit task }
+        </button>
       </div>
     </form>
   </div>

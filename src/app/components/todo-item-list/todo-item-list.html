@@ -50,7 +50,7 @@
         </td>
         <td>{{ task.dueAt }}</td>
         <button class="deleteTaskBtn" (click)="deleteTask(task.id)">X</button>
-        <button class="editTaskBtn">Edit</button>
+        <button class="editTaskBtn" (click)="openEditTaskModal(task)">Edit</button>
       </tr>
       }
     </tbody>

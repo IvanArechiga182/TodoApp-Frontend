@@ -3,8 +3,14 @@
   <h3>Start adding your tasks!</h3>
 </div>
 <main class="mainSection">
-  <app-todo-item-list (newTask)="openFormModal()" />
+  <app-todo-item-list (newTask)="openFormModal()" (editTask)="openEditTaskModal()" />
   @if(showNewTaskModal()){
-  <app-todo-form (close)="closeFormModal()"></app-todo-form>
+  <app-todo-form (close)="closeFormModal()" [formMode]="formMode()"></app-todo-form>
+  } @if(showEditTaskModal()){
+  <app-todo-form
+    (close)="closeFormModal()"
+    [formMode]="formMode()"
+    [taskToEdit]="this.taskToEdit"
+  ></app-todo-form>
   }
 </main>

@@ -5,6 +5,6 @@ export interface TaskModel {
   status: string;
   priority: string;
   createdAt: string;
-  updatedAt: string;
+  updatedAt?: string;
   dueAt: string;
 }
